@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var app = express();
 var expressWs = require('express-ws')(app);
+var opener = require('opener');
 
 var port = process.env.PORT || 7000;
 
@@ -32,4 +33,10 @@ app.ws('/', function(ws, req) {
   });
 });
 
-app.listen(port);
+var server = app.listen(port, 'localhost', function() {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Now running AVRGA tester on http://%s:%s', host, port);
+  opener('http://' + host + ':' + port);
+});
