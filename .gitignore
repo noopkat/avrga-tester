@@ -1,1 +1,17 @@
 node_modules
+
+# compiled output
+avrgat-fe/dist
+avrgat-fe/tmp
+
+# dependencies
+avrgat-fe/node_modules
+avrgat-fe/bower_components
+
+# misc
+avrgat-fe/.sass-cache
+avrgat-fe/connect.lock
+avrgat-fe/coverage/*
+avrgat-fe/libpeerconnection.log
+avrgat-fe/npm-debug.log
+avrgat-fe/testem.log
