@@ -8,10 +8,10 @@ var port = process.env.PORT || 7000;
 
 var avrgirl, blink;
 
-app.use('/assets', express.static(__dirname + '/avrgat-fe/dist/assets/'));
+app.use('/assets', express.static(__dirname + '/frontend/assets/'));
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/avrgat-fe/dist/index.html');
+  res.sendFile(__dirname + '/frontend/index.html');
 });
 
 app.ws('/', function(ws, req) {

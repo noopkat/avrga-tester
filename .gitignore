@@ -1,17 +1,18 @@
 node_modules
 
 # compiled output
-avrgat-fe/dist
-avrgat-fe/tmp
+ember-app/dist
+ember-app/tmp
+frontend
 
 # dependencies
-avrgat-fe/node_modules
-avrgat-fe/bower_components
+ember-app/node_modules
+ember-app/bower_components
 
 # misc
-avrgat-fe/.sass-cache
-avrgat-fe/connect.lock
-avrgat-fe/coverage/*
-avrgat-fe/libpeerconnection.log
-avrgat-fe/npm-debug.log
-avrgat-fe/testem.log
+ember-app/.sass-cache
+ember-app/connect.lock
+ember-app/coverage/*
+ember-app/libpeerconnection.log
+ember-app/npm-debug.log
+ember-app/testem.log
