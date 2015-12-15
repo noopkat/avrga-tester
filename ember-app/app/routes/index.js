@@ -63,19 +63,24 @@ export default Ember.Route.extend({
     var socket = this.get('socketService').socketFor('ws://localhost:7000/');
 
     // events
-    socket.on('open', this.myOpenHandler, this);
-    socket.on('message', this.myMessageHandler, this);
+    socket.on('open', this.openHandler, this);
+    socket.on('message', this.messageHandler, this);
     socket.on('close', function(event) {}, this);
+
+    window.addEventListener("message", function(event) {
+      if (event.origin !== "http://avrgat.noopkat.com") {
+        console.log(event.origin);
+        return;
+      }
+      console.log('got message!', event.data);
+    }, false);
   },
- 
-  myOpenHandler: function(event) {
+  openHandler: function(event) {
     console.log('On open event has been called: ' + JSON.stringify(event));
   },
- 
-  myMessageHandler: function(event) {
+  messageHandler: function(event) {
     console.log('Message:', JSON.parse(event.data));
   },
-
   model() {
     return boards;
   }
