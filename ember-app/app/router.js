@@ -5,16 +5,12 @@ const Router = Ember.Router.extend({
   location: config.locationType
 });
 
-Router.map(function() {
-  this.route('help');
-});
 
 Router.map(function() {
+  this.route('start');
+  this.route('logout');
   this.route('about');
-});
-
-Router.map(function() {
-  this.route('authenticate');
+  this.route('help');
 });
 
 export default Router;
