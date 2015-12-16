@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  cookieMonster: Ember.inject.service('cookieMonster'),
   redirect(modal, transition) {
-    this.cookie.removeCookie('api-token');
+    this.get('cookieMonster').burn('api-token');
     this.transitionTo('index');
   }
 });

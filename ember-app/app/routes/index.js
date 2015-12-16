@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  cookieMonster: Ember.inject.service('cookieMonster'),
   init: function() {
     this._super.apply(this, arguments);
     var self = this;
@@ -12,10 +13,8 @@ export default Ember.Route.extend({
       }
       console.log('got message!', event.data);
 
-      var cookie = this.get('cookie');
-
-      cookie.setCookie('api-token', event.data)
-        .then(this.transitionTo('start'));
+      this.get('cookieMonster').bake('api-token', event.data, 30);
+      this.transitionTo('start');
 
     }, false);
   },

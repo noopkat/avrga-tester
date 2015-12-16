@@ -56,23 +56,22 @@ var boards = [
 
 export default Ember.Route.extend({
   socketService: Ember.inject.service('websockets'),
+  cookieMonster: Ember.inject.service('cookieMonster'),
   redirect(modal, transition) {
-    var token  = this.cookie.getCookie('api-token');
+    var token  = this.get('cookieMonster').eat('api-token');
 
     if (!token) {
       console.log('transitioning...');
       this.transitionTo('index');
     }
   },
-  username: 'nobody',
   init: function() {
     this._super.apply(this, arguments);
  
     // get socket for use
     var socket = this.get('socketService').socketFor('ws://localhost:7000/');
 
-    console.log(this.cookie.getCookie('api-token'));
-    this.getUser().then((result) => { console.log(result); this.set('username', result); console.log(this.username) });
+    console.log('new cookie:', this.get('cookieMonster').eat('api-token'));
 
     // events
     socket.on('open', this.openHandler, this);
@@ -84,23 +83,6 @@ export default Ember.Route.extend({
   },
   messageHandler: function(event) {
     console.log('Message:', JSON.parse(event.data));
-  },
-  getUser: function() {
-    var self = this;
-    return new Ember.RSVP.Promise(function (resolve, reject) {
-      Ember.$.ajax({
-        type: 'GET',
-        url: 'http://api.github.com/user?access_token='+ self.cookie.getCookie('api-token'),
-        headers: { 'Accept': 'application/json' },
-        success: function (data) {
-          resolve(data.login);
-        },
-        error: function (request, textStatus, error) {
-          console.log(error);
-          reject(error);
-        }
-      });
-    });
   },
   model() {
     return boards;
