@@ -28,7 +28,7 @@ app.get('/*', function(req, res) {
   res.sendFile(__dirname + '/frontend/index.html');
 });
 
-app.ws('/start', function(ws, req) {
+app.ws('/', function(ws, req) {
   ws.send(JSON.stringify({type: 'message', body: 'Hey! Websockets are working.'}));
   ws.on('message', function(message) {
     messageHandler(message, ws);
