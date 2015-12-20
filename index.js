@@ -4,6 +4,21 @@ var path = require('path');
 var app = express();
 var expressWs = require('express-ws')(app);
 var opener = require('opener');
+var os = require('os');
+var fs = require('fs');
+
+var avrgatv;
+var avrgav;
+
+fs.readFile(path.join(__dirname, 'package.json'), function (err, data) {
+  var pjson = JSON.parse(data);
+  avrgatv = pjson.version;
+});
+
+fs.readFile(path.join(__dirname, 'node_modules', 'avrgirl-arduino', 'package.json'), function (err, data) {
+  var pjson = JSON.parse(data);
+  avrgav = pjson.version;
+});
 
 var port = process.env.PORT || 7000;
 
@@ -19,6 +34,7 @@ app.ws('/', function(ws, req) {
     messageHandler(message, ws);
   });
 });
+
 
 var server = app.listen(port, 'localhost', setUpApp);
 
@@ -42,6 +58,16 @@ function messageHandler(message, ws) {
     if (err) {
       err = err.message;
     }
-    ws.send(JSON.stringify({type: 'report', error: err}));
+
+    var report = {
+      type: 'report',
+      error: err,
+      nodev: process.version.slice(1),
+      os: os.platform(),
+      osv: os.release(),
+      avrgatv: avrgatv,
+      avrgav: avrgav
+    }
+    ws.send(JSON.stringify(report));
   });
 }
