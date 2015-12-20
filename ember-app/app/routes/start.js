@@ -61,6 +61,7 @@ export default Ember.Route.extend({
   redirect() {
     var token  = this.get('cookieMonster').eat('api-token');
 
+    // if tester is not logged in, bump them back to sign in page
     if (!token) {
       this.transitionTo('index');
     }
@@ -77,8 +78,11 @@ export default Ember.Route.extend({
   messageHandler: function(event) {
     var message = JSON.parse(event.data);
 
+    // if we got a report
     if (message.type === 'report') {
+      // create new report in service
       this.get('reportService').create(message);
+      // redirect
       this.transitionTo('report');
     }
   },

@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   report: null,
   init: function() {
     this._super.apply(this, arguments);
+    // get report from service
     this.set('report', this.get('reportService').report);
   }
 });
