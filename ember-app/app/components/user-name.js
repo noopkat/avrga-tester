@@ -6,7 +6,17 @@ export default Ember.Component.extend({
   username: '',
   init: function() {
     this._super.apply(this, arguments);
-    this.getUser().then((result) => { console.log(result); this.set('username', result); console.log(this.username) });
+
+    if (!this.username && !this.get('cookieMonster').eat('username')) {
+      this.getUser().then((result) => {
+        this.set('username', result);
+        this.get('cookieMonster').bake('username', result, 30);
+      }, () => {
+        this.set('username', 'cool tester friend!');
+      });
+    } else {
+      this.set('username', this.get('cookieMonster').eat('username'));
+    }
   },
   getUser: function() {
     var self = this;
