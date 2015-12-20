@@ -1,0 +1,11 @@
+<ul>
+  <li>Github user: {{#user-name}}{{/user-name}}</li>
+  <li>OS: {{report.os}}</li>
+  <li>OS version: {{report.osv}}</li>
+  <li>Node version: {{report.nodev}}</li>
+  <li>Tester version: {{report.avrgatv}}</li>
+  <li>AVRGirl-Arduino version: {{report.avrgav}}</li>
+  {{#if report.error}}
+    <li>Errors: "{{report.error}}"</li>
+  {{/if}}
+</ul>

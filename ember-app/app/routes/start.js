@@ -55,9 +55,10 @@ var boards = [
   }];
 
 export default Ember.Route.extend({
+  reportService: Ember.inject.service('report-service'),
   socketService: Ember.inject.service('websockets'),
   cookieMonster: Ember.inject.service('cookieMonster'),
-  redirect(modal, transition) {
+  redirect() {
     var token  = this.get('cookieMonster').eat('api-token');
 
     if (!token) {
@@ -74,7 +75,12 @@ export default Ember.Route.extend({
     socket.on('message', this.messageHandler, this);
   },
   messageHandler: function(event) {
-    console.log('Message:', JSON.parse(event.data));
+    var message = JSON.parse(event.data);
+
+    if (message.type === 'report') {
+      this.get('reportService').create(message);
+      this.transitionTo('report');
+    }
   },
   model() {
     return boards;

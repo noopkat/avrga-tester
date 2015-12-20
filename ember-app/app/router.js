@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('logout');
   this.route('about');
   this.route('help');
+  this.route('report');
 });
 
 export default Router;
