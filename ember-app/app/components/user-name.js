@@ -23,7 +23,7 @@ export default Ember.Component.extend({
     return new Ember.RSVP.Promise(function (resolve, reject) {
       Ember.$.ajax({
         type: 'GET',
-        url: 'http://api.github.com/user?access_token='+ self.get('cookieMonster').eat('api-token'),
+        url: `http://api.github.com/user?access_token=${self.get('cookieMonster').eat('api-token')}`,
         headers: { 'Accept': 'application/json' },
         success: function (data) {
           resolve(data.login);

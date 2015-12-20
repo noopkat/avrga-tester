@@ -61,7 +61,6 @@ export default Ember.Route.extend({
     var token  = this.get('cookieMonster').eat('api-token');
 
     if (!token) {
-      console.log('transitioning...');
       this.transitionTo('index');
     }
   },
@@ -71,15 +70,8 @@ export default Ember.Route.extend({
     // get socket for use
     var socket = this.get('socketService').socketFor('ws://localhost:7000/');
 
-    console.log('new cookie:', this.get('cookieMonster').eat('api-token'));
-
     // events
-    socket.on('open', this.openHandler, this);
     socket.on('message', this.messageHandler, this);
-    socket.on('close', function() {}, this);
-  },
-  openHandler: function(event) {
-    console.log('On open event has been called: ' + JSON.stringify(event));
   },
   messageHandler: function(event) {
     console.log('Message:', JSON.parse(event.data));
