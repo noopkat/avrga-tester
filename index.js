@@ -65,7 +65,8 @@ function messageHandler(message, ws) {
       os: os.platform(),
       osv: os.release(),
       avrgatv: avrgatv,
-      avrgav: avrgav
+      avrgav: avrgav,
+      board: message
     }
     ws.send(JSON.stringify(report));
   });
