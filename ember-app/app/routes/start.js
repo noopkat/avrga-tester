@@ -30,11 +30,11 @@ var boards = [
     machine: 'duemilanove168'
   },
   {
-    human: 'Blend Micro',
+    human: 'RedBear Blend Micro',
     machine: 'blend-micro'
   },
   {
-    human: 'tinyduino',
+    human: 'Tinyduino',
     machine: 'tinyduino'
   },
   {

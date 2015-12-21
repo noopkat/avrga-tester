@@ -1,0 +1,154 @@
+body {
+  background-color: #fff;
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(250, 250, 250, 1);
+  overflow:hidden;
+}
+
+span.ember-view {
+  padding: 0;
+  margin: 0;
+  display: inline;
+  margin-right: -3px;
+}
+
+h1 {
+  color: #000;
+  font-weight: bold;
+  font-family: sans-serif;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 18px;
+}
+
+#menu {
+  margin-bottom: 30px;
+}
+
+#wrapper {
+  text-align: left;
+  width: 800px;
+  padding: 30px;
+  margin: 100px auto;
+  background-color: #fff;
+  border: 2px solid #efefef;
+  position: relative;
+  border-radius: 4px;
+  
+}
+
+#boardform {
+  margin-top: 40px;
+}
+
+#boardform select {
+  padding: 6px 6px 6px 10px;
+  margin: 0 8px 6px -5px;
+  height: 46px;
+  -webkit-box-shadow: 2px 3px 0 #ccc, 0 -1px #fff inset;
+  -moz-box-shadow: 2px 3px 0 #ccc, 0 -1px #fff inset;
+  box-shadow: 2px 3px 0 #ccc, 0 -1px #fff inset;
+  color:#333;
+  border:none;
+  outline: none;
+  border: 2px solid #bbb;
+  display: inline-block;
+  font-size: 20px;
+  cursor:pointer;
+}
+
+#boardform select:focus {
+  border: 2px solid #666;
+}
+
+#boardform button.starttest {
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-left: -3px;
+}
+
+#boardform ol {
+  list-style-type: none;
+  list-style-position: outside;
+  counter-reset:li;
+  padding-left: 15px;
+}
+
+#boardform li {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 0px;
+  font-size: 20px;
+}
+
+#boardform li:before { 
+  content:counter(li);
+  counter-increment:li;
+  font-size: 30px;
+  margin-right:15px;
+  position:relative;
+  top:3px;
+  left:-15px;
+  color: #aaa;
+}
+
+#reportform fieldset {
+  border: none;
+}
+
+a.button {
+  margin: 0 10px 15px 0;
+}
+
+#boardform button.grey {
+  font-size: 24px;
+  background: #aaa;
+  box-shadow: 1px 1px #999, 0px 1px #aaa, 2px 1px #999, 1px 2px #aaa, 3px 2px #999, 2px 3px #aaa, 4px 3px #999, 3px 4px #aaa, 5px 4px #999, 4px 5px #aaa, 6px 5px #999, 5px 6px #aaa;
+}
+
+a.button.headerlink {
+  font-size: 14px;
+  background: #83AF9B;
+  box-shadow: 1px 1px #648778, 0px 1px #759d8b, 2px 1px #648778, 1px 2px #759d8b, 3px 2px #648778, 2px 3px #759d8b, 4px 3px #648778, 3px 4px #759d8b, 5px 4px #648778, 4px 5px #759d8b, 6px 5px #648778, 5px 6px #759d8b;
+}
+
+a.button.login {
+  font-size: 24px;
+}
+
+button, .button, input[type=submit] {
+  border: 0;
+  background: #5786c1;
+  color: white;
+  padding: 8px 14px;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  /* needed for anchors */
+  position: relative;
+  box-shadow: 1px 0px #3a587f, 0px 1px #4171ae, 2px 1px #3a587f, 1px 2px #4171ae, 3px 2px #3a587f, 2px 3px #4171ae, 4px 3px #3a587f, 3px 4px #4171ae, 5px 4px #3a587f, 4px 5px #4171ae, 6px 5px #3a587f, 5px 6px #4171ae;
+}
+button:hover, button:focus, button.hover, button.focus, .button:hover, .button:focus, .button.hover, .button.focus, input[type=submit]:hover, input[type=submit]:focus, input[type=submit].hover, input[type=submit].focus {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 0px #3a587f, 0px 1px #4171ae, 2px 1px #3a587f, 1px 2px #4171ae, 3px 2px #3a587f, 2px 3px #4171ae, 4px 3px #3a587f, 3px 4px #4171ae;
+}
+
+button:focus, button.focus, .button.focus, .button:focus {
+  border: 2px solid #666;
+}
+
+/*button:active, button.active, .button:active, .button.active, input[type=submit]:active, input[type=submit].active {
+  transform: translate(4px, 4px);
+  box-shadow: 1px 0px #3a587f, 0px 1px #4171ae, 2px 1px #3a587f, 1px 2px #4171ae;
+}*/

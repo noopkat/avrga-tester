@@ -1,12 +1,17 @@
-<form>
-  <label for="boardname">Which board are you testing?</label>
-
-  {{simple-select
+<form id="boardform">
+  
+  <ol>
+    <li>Plug in your Arduino</li>
+    <li>
+      {{simple-select
       content=boards 
       optionLabelPath="human" 
       optionValuePath="machine" 
       action="boardChange" 
-      prompt="Select a board"}}
-
-  <button {{action "startTest"}}>Start test!</button>
+      prompt="Which board is it?"}}
+    </li>
+    <li>
+      <button {{action "startTest"}} class="{{buttonClass}}">{{buttonText}}</button>
+    </li>
+  </ol>
 </form>
