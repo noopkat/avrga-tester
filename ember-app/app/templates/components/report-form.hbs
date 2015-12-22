@@ -5,11 +5,11 @@
   </fieldset>
   <fieldset>
     {{input type="checkbox" id="wantsInvite" name="wantsInvite" checked=wantsInvite }} 
-    <label for="wantsInvite">I would like to earn a 'org badge' via invitation to the AVRGirl testers team on Github.</label>
+    <label for="wantsInvite">I would like to earn an 'org badge' via invitation to the AVRGirl testers team on Github.</label>
   </fieldset>
   <fieldset>
     {{input type="checkbox" id="isOk" name="isOk" checked=isOk}} 
-    <label for="isOk">I am ok with all of the above information being stored remotely upon submission {{#link-to 'help'}}Privacy Policy{{/link-to}}</label>
+    <label for="isOk">I am ok with all of the above information being stored remotely upon submission {{#link-to 'help'}}[ privacy policy ]{{/link-to}}</label>
   </fieldset>
   <button {{action 'sendReport'}}>Send Report</button>
 </form>

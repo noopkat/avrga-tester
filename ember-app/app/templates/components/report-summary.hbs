@@ -6,7 +6,6 @@
   <li>Node version: {{report.nodev}}</li>
   <li>Tester version: {{report.avrgatv}}</li>
   <li>AVRGirl-Arduino version: {{report.avrgav}}</li>
-  {{#if report.error}}
-    <li>Errors: "{{report.error}}"</li>
-  {{/if}}
+    <li>Errors: {{#if report.error}}"{{report.error}}"{{else}}None{{/if}}</li>
+  
 </ul>
