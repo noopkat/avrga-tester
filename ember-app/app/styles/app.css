@@ -107,10 +107,17 @@ a.button {
   margin: 0 10px 15px 0;
 }
 
-#boardform button.grey {
+#reportform button {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+#boardform button.grey, #reportform button:disabled, #reportform input[type=submit]:disabled {
   font-size: 24px;
   background: #aaa;
   box-shadow: 1px 1px #999, 0px 1px #aaa, 2px 1px #999, 1px 2px #aaa, 3px 2px #999, 2px 3px #aaa, 4px 3px #999, 3px 4px #aaa, 5px 4px #999, 4px 5px #aaa, 6px 5px #999, 5px 6px #aaa;
+  cursor: not-allowed;
+  transform: none;
 }
 
 a.button.headerlink {

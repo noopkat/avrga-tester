@@ -21,6 +21,7 @@
     "avrgirl-arduino": "*",
     "express": "^4.13.3",
     "express-ws": "^0.2.6",
+    "node-uuid": "^1.4.7",
     "opener": "^1.4.1"
   }
 }

@@ -7,7 +7,6 @@ export default Ember.Service.extend({
     this.set('report', {});
   },
   create(message) {
-    console.log('service report:', message);
     this.set('report', message);
   },
   empty() {

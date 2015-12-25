@@ -77,6 +77,7 @@ export default Ember.Route.extend({
   },
   messageHandler: function(event) {
     var message = JSON.parse(event.data);
+    message.username = this.get('cookieMonster').eat('username');
 
     // if we got a report
     if (message.type === 'report') {

@@ -1,17 +1,26 @@
 import Ember from 'ember';
+import uuid from 'npm:node-uuid';
 
 export default Ember.Component.extend({
   reportService: Ember.inject.service('report-service'),
   cookieMonster: Ember.inject.service('cookieMonster'),
   isOk: false,
   wantsInvite: false,
+  wantsAnon: false,
   reportNotes: '',
-  init: function() {
-    this._super.apply(this, arguments);
-  },
+  isSubmitDisabled: Ember.computed('isOk', function() {
+    return !this.get('isOk');
+  }),
+  anonChanged: Ember.observer('wantsAnon', function() {
+    let uname;
+    if (this.wantsAnon) {
+      uname = uuid.v4();
+    } else {
+      uname = this.get('cookieMonster').eat('username');
+    }
+    this.get('reportService').set('report.username', uname);
+  }),
   postReport: function(report) {
-    var self = this;
-
     // post report to report API endpoint
     return new Ember.RSVP.Promise(function (resolve, reject) {
       Ember.$.ajax({
@@ -28,11 +37,11 @@ export default Ember.Component.extend({
     });
   },
   actions: {
+    gotoThanks: function() {
+      this.sendAction('gotoThanks');
+    },
     sendReport: function() {
-      console.log(this.get('isOk'), this.get('wantsInvite'), this.get('reportNotes'));
-
       var fullReport = {
-        username: this.get('cookieMonster').eat('username'),
         notes: this.get('reportNotes'),
         timestamp: Date.now()
       };
@@ -45,11 +54,10 @@ export default Ember.Component.extend({
       console.log('fullreport:', fullReport);
 
       this.postReport(fullReport).then(() => {
-        console.log('success');
+        this.sendAction('gotoThanks');
       }, (error) => {
         console.log('error!', error);
       });
-
     }
   }
 });

@@ -4,12 +4,12 @@
     {{textarea name=notes id="reportNotes" cols="80" rows="6" value=reportNotes}}
   </fieldset>
   <fieldset>
-    {{input type="checkbox" id="wantsInvite" name="wantsInvite" checked=wantsInvite }} 
-    <label for="wantsInvite">I would like to earn an 'org badge' via invitation to the AVRGirl testers team on Github.</label>
+    {{input type="checkbox" id="wantsAnon" name="wantsAnon" checked=wantsAnon }} 
+    <label for="wantsAnon">I would prefer to stay anonymous (don't attach my username to the report or invite to AVRGirl Github org).</label>
   </fieldset>
   <fieldset>
     {{input type="checkbox" id="isOk" name="isOk" checked=isOk}} 
-    <label for="isOk">I am ok with all of the above information being stored remotely upon submission {{#link-to 'help'}}[ privacy policy ]{{/link-to}}</label>
+    <label for="isOk">* I am ok with all of the above report details being stored remotely upon submission {{#link-to 'help'}}privacy policy{{/link-to}}</label>
   </fieldset>
-  <button {{action 'sendReport'}}>Send Report</button>
+  <button {{action 'sendReport'}} disabled={{isSubmitDisabled}}>Send Report</button>
 </form>
