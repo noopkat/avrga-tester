@@ -70,10 +70,14 @@ export default Ember.Route.extend({
     this._super.apply(this, arguments);
  
     // get socket for use
-    var socket = this.get('socketService').socketFor('ws://localhost:7000/');
+    var socket = this.get('socketService').socketFor(`ws://${window.location.host}`);
 
     // events
+    socket.on('open', this.onOpen, this);
     socket.on('message', this.messageHandler, this);
+  },
+  onOpen: function() {
+    console.log('open');
   },
   messageHandler: function(event) {
     var message = JSON.parse(event.data);

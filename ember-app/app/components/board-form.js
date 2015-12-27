@@ -15,7 +15,7 @@ export default Ember.Component.extend({
       this.set('buttonClass', 'grey');
       this.set('buttonText', 'Running test...');
       // get socket
-      var socket = this.get('socketService').socketFor('ws://localhost:7000/');
+      var socket = this.get('socketService').socketFor(`ws://${window.location.host}`);
       // send the board choice through to the backend server
       socket.send(this.get('boardChoice'));
     },
