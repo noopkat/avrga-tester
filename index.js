@@ -37,6 +37,7 @@ module.exports = function (Avrgirl, version, hexpath) {
     var port = server.address().port;
 
     console.log('Now running AVRGA tester on http://%s:%s', host, port);
+    console.log('(Press Ctrl + C to quit)');
     opener('http://' + host + ':' + port);
   }
 
