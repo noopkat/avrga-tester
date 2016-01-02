@@ -4,9 +4,9 @@ export default Ember.Component.extend({
   reportService: Ember.inject.service('report-service'),
   userService: Ember.inject.service('user'),
   isOk: false,
-  wantsInvite: false,
   wantsAnon: false,
   reportNotes: '',
+  contactOk: false,
   isSubmitDisabled: Ember.computed('isOk', function() {
     return !this.get('isOk');
   }),
@@ -41,6 +41,7 @@ export default Ember.Component.extend({
     },
     sendReport: function() {
       var fullReport = {
+        contactOk: this.get('contactOk'),
         notes: this.get('reportNotes'),
         timestamp: Date.now()
       };

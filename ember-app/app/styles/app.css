@@ -186,6 +186,18 @@ a.button {
   width: 150px;
 }
 
+.privacy {
+  padding: 0;
+  margin: 0 0 0 20px;
+}
+
+.privacy li {
+  list-style-position: outside;
+  padding-bottom: 18px;
+  line-height: 1.5em;
+  font-size: 18px;
+}
+
 /*a.button.headerlink {
   font-size: 14px;
   background: #83AF9B;

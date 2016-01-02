@@ -8,8 +8,12 @@
     <label for="wantsAnon">I would prefer to stay anonymous (don't attach my username to the report or invite to AVRGirl Github org).</label>
   </fieldset>
   <fieldset>
+    {{input type="checkbox" id="contactOk" name="contactOk" checked=contactOk }}
+    <label for="contactOk">I am ok with being reached out to if further info might help debug an issue.</label>
+  </fieldset>
+  <fieldset>
     {{input type="checkbox" id="isOk" name="isOk" checked=isOk}}
-    <label for="isOk">I am ok with all of the above report details being stored remotely upon submission (required) {{#link-to 'help'}}privacy policy{{/link-to}}</label>
+    <label for="isOk">I am ok with all of the above report details being stored remotely upon submission (required) {{#link-to 'privacy'}}privacy policy{{/link-to}}</label>
   </fieldset>
   <button {{action 'sendReport'}} disabled={{isSubmitDisabled}}>Send Report</button>
 </form>
