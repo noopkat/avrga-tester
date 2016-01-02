@@ -43,6 +43,16 @@ p {
   line-height: 1.5em;
 }
 
+a {
+  color: #AC77BA;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
 #menu {
   margin-bottom: 30px;
 }
@@ -153,6 +163,11 @@ p {
 
 a.button {
   margin: 0 10px 15px 0;
+}
+
+#reportform a.cancellink {
+  margin-left: 20px;
+  font-size: 20px;
 }
 
 #reportform button {
