@@ -6,7 +6,7 @@ var opener = require('opener');
 var os = require('os');
 var fs = require('fs');
 
-module.exports = function (Avrgirl, version) {
+module.exports = function (Avrgirl, version, hexpath) {
 
   var avrgatv;
   var avrgav = version;
@@ -42,12 +42,11 @@ module.exports = function (Avrgirl, version) {
 
   function messageHandler(message, ws) {
 
-    var blink = path.join(__dirname, 'node_modules', 'avrgirl-arduino', 'junk', 'hex', message, 'Blink.cpp.hex');
+    var blink = path.join(hexpath, message, 'Blink.cpp.hex');
 
     var avrgirl = new Avrgirl({board: message});
 
     avrgirl.flash(blink, function(err) {
-      console.log(err, 'done flashing!');
       if (err) {
         err = err.message;
       }

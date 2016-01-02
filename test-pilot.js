@@ -8,6 +8,7 @@ var avrgav;
 fs.readFile(path.join(__dirname, 'node_modules', 'avrgirl-arduino', 'package.json'), function (err, data) {
   var pjson = JSON.parse(data);
   avrgav = pjson.version;
-  testpilot(Avrgirl, avrgav);
+  var hexpath = path.join(__dirname, 'node_modules', 'avrgirl-arduino', 'junk', 'hex');
+  testpilot(Avrgirl, avrgav, hexpath);
 });
 
