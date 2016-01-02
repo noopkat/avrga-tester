@@ -15,6 +15,9 @@
     {{input type="checkbox" id="isOk" name="isOk" checked=isOk}}
     <label for="isOk">I am ok with all of the above report details being stored remotely upon submission (required) {{#link-to 'privacy'}}privacy policy{{/link-to}}</label>
   </fieldset>
+  {{#if errorString}}
+    <span class="error">{{errorString}}</span>
+  {{/if}}
   <button {{action 'sendReport'}} disabled={{isSubmitDisabled}}>Send Report</button>
   {{#link-to 'start' class="cancellink"}}cancel{{/link-to}}
 </form>

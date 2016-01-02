@@ -7,6 +7,7 @@ export default Ember.Component.extend({
   wantsAnon: false,
   reportNotes: '',
   contactOk: false,
+  errorString: '',
   isSubmitDisabled: Ember.computed('isOk', function() {
     return !this.get('isOk');
   }),
@@ -20,6 +21,7 @@ export default Ember.Component.extend({
     this.get('reportService').set('report.username', uname);
   }),
   postReport: function(report) {
+    this.set('errorString', '');
     // post report to report API endpoint
     return new Ember.RSVP.Promise(function (resolve, reject) {
       Ember.$.ajax({
@@ -30,7 +32,7 @@ export default Ember.Component.extend({
           resolve();
         },
         error: function (request, textStatus, error) {
-          reject(error);
+          reject(error, textStatus);
         }
       });
     });
@@ -53,8 +55,8 @@ export default Ember.Component.extend({
 
       this.postReport(fullReport).then(() => {
         this.sendAction('gotoThanks');
-      }, (error) => {
-        console.log('error!', error);
+      }, (error, textStatus) => {
+        this.set('errorString', `Oops! Something went wrong when trying to submit the report. ${error}`);
       });
     }
   }

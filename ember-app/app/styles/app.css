@@ -175,6 +175,18 @@ a.button {
   margin-top: 20px;
 }
 
+#reportform .error {
+  background-color: #E4A3A7;
+  display: block;
+  color: #5F4446;
+  padding: 7px;
+  border-radius: 4px;
+}
+
+.hide {
+  display: none;
+}
+
 #boardform button.grey, #reportform button:disabled, #reportform input[type=submit]:disabled {
   font-size: 24px;
   background: #aaa;
