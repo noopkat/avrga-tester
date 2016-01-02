@@ -6,7 +6,6 @@ export default Ember.Component.extend({
   username: Ember.computed.oneWay('userService.username'),
   init: function() {
     this._super.apply(this, arguments);
-    console.log(this.get('username'));
     // if their username is set not in a cookie
     if (!this.get('username')) {
       // ask github for their username

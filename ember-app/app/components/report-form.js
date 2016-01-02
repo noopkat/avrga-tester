@@ -51,8 +51,6 @@ export default Ember.Component.extend({
         fullReport[k] = rkeys[k];
       }
 
-      console.log('fullreport:', fullReport);
-
       this.postReport(fullReport).then(() => {
         this.sendAction('gotoThanks');
       }, (error) => {
