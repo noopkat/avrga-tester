@@ -1,15 +1,15 @@
 <form id="reportform">
   <fieldset>
     <label for="reportNotes">Any additonal notes you'd like to add?</label><br/>
-    {{textarea name=notes id="reportNotes" cols="80" rows="6" value=reportNotes}}
+    {{textarea name=notes id="reportNotes" rows="6" value=reportNotes}}
   </fieldset>
   <fieldset>
-    {{input type="checkbox" id="wantsAnon" name="wantsAnon" checked=wantsAnon }} 
+    {{input type="checkbox" id="wantsAnon" name="wantsAnon" checked=wantsAnon }}
     <label for="wantsAnon">I would prefer to stay anonymous (don't attach my username to the report or invite to AVRGirl Github org).</label>
   </fieldset>
   <fieldset>
-    {{input type="checkbox" id="isOk" name="isOk" checked=isOk}} 
-    <label for="isOk">* I am ok with all of the above report details being stored remotely upon submission {{#link-to 'help'}}privacy policy{{/link-to}}</label>
+    {{input type="checkbox" id="isOk" name="isOk" checked=isOk}}
+    <label for="isOk">I am ok with all of the above report details being stored remotely upon submission (required) {{#link-to 'help'}}privacy policy{{/link-to}}</label>
   </fieldset>
   <button {{action 'sendReport'}} disabled={{isSubmitDisabled}}>Send Report</button>
 </form>

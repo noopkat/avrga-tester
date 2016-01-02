@@ -2,25 +2,21 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'span',
-  cookieMonster: Ember.inject.service('cookieMonster'),
-  username: '',
+  userService: Ember.inject.service('user'),
+  username: Ember.computed.oneWay('userService.username'),
   init: function() {
     this._super.apply(this, arguments);
-
+    console.log(this.get('username'));
     // if their username is set not in a cookie
-    if (!this.username && !this.get('cookieMonster').eat('username')) {
+    if (!this.get('username')) {
       // ask github for their username
       this.getUser().then((result) => {
-        this.set('username', result);
-        // create username cookie with github username
-        this.get('cookieMonster').bake('username', result, 30);
+        // create username  with github username
+        this.get('userService').createUsername(result);
       }, () => {
         // if something went wrong, fill in name with nice fallback
-        this.set('username', 'cool tester friend!');
+        this.get('userService').createUsername('cool tester friend');
       });
-    } else {
-      // if username is already in a cookie, set username prop only
-      this.set('username', this.get('cookieMonster').eat('username'));
     }
   },
   getUser: function() {
@@ -30,7 +26,7 @@ export default Ember.Component.extend({
     return new Ember.RSVP.Promise(function (resolve, reject) {
       Ember.$.ajax({
         type: 'GET',
-        url: `http://api.github.com/user?access_token=${self.get('cookieMonster').eat('api-token')}`,
+        url: `http://api.github.com/user?access_token=${self.get('userService').token}`,
         headers: { 'Accept': 'application/json' },
         success: function (data) {
           resolve(data.login);

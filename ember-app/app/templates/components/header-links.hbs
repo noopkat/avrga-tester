@@ -1,5 +1,11 @@
 <div id="menu">
-  {{#link-to "start" class="button headerlink"}}Startover{{/link-to}}
-  {{#link-to "about" class="button headerlink"}}About{{/link-to}}
-  {{#link-to "help" class="button headerlink"}}Help{{/link-to}}
+{{#unless hideStartOverLink}}
+  {{#if isLoggedIn}}
+    {{#link-to "start" class="headerlink"}}Startover{{/link-to}}
+  {{/if}}
+{{/unless}}
+  {{#link-to "help" class="headerlink"}}Help{{/link-to}}
+  {{#if isLoggedIn}}
+    {{#link-to "logout" class="headerlink"}}Log out{{/link-to}}
+  {{/if}}
 </div>

@@ -5,8 +5,8 @@ body {
   margin: 0;
   height: 100%;
   text-align: center;
-  background-color: rgba(250, 250, 250, 1);
-  overflow:hidden;
+  color: #333;
+/*  background-color: rgba(250, 250, 250, 1);*/
 }
 
 span.ember-view {
@@ -17,11 +17,25 @@ span.ember-view {
 }
 
 h1 {
-  color: #000;
+  color: #333;
   font-weight: bold;
   font-family: sans-serif;
   margin-top: 10px;
   letter-spacing: 1px;
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+h2.yay {
+  margin-top: -20px;
+  color: #49C331;
+}
+
+h1, h2 {
+  font-family: 'Architects Daughter', cursive;
 }
 
 p {
@@ -38,14 +52,32 @@ p {
   padding: 30px;
   margin: 100px auto;
   background-color: #fff;
-  border: 2px solid #efefef;
+/*  border: 2px solid #efefef;*/
   position: relative;
   border-radius: 4px;
-  
+}
+
+.avrgirl {
+  position: relative;
+  float: left;
+  margin-right: 40px;
+}
+
+#content: {
+  position: relative;
+  float: left;
+}
+
+.githublogin {
+  padding-top: 3px;
+}
+
+.githublogin .login {
+  margin-top: 10px;
 }
 
 #boardform {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 #boardform select {
@@ -88,7 +120,7 @@ p {
   font-size: 20px;
 }
 
-#boardform li:before { 
+#boardform li:before {
   content:counter(li);
   counter-increment:li;
   font-size: 30px;
@@ -99,8 +131,23 @@ p {
   color: #aaa;
 }
 
+#reportform {
+  margin-top: 30px;
+}
+
 #reportform fieldset {
   border: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+#reportform textarea {
+  border: 2px solid #ddd;
+  padding: 10px;
+  width: 370px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
 }
 
 a.button {
@@ -120,10 +167,40 @@ a.button {
   transform: none;
 }
 
-a.button.headerlink {
+.reportlist {
+  min-width: 400px;
+}
+
+.reportlist tr:nth-child(odd) {
+   background-color: #eee;
+   background-color: #EBF6DB;
+}
+
+.reportlist td {
+  margin: 0px;
+  padding: 10px;
+}
+
+.reportlist td:nth-child(odd) {
+  font-weight: bold;
+  width: 150px;
+}
+
+/*a.button.headerlink {
   font-size: 14px;
   background: #83AF9B;
   box-shadow: 1px 1px #648778, 0px 1px #759d8b, 2px 1px #648778, 1px 2px #759d8b, 3px 2px #648778, 2px 3px #759d8b, 4px 3px #648778, 3px 4px #759d8b, 5px 4px #648778, 4px 5px #759d8b, 6px 5px #648778, 5px 6px #759d8b;
+}*/
+
+a.headerlink {
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+a.headerlink:hover {
+  text-decoration: underline;
 }
 
 a.button.login {
@@ -135,7 +212,7 @@ button, .button, input[type=submit] {
   background: #5786c1;
   color: white;
   padding: 8px 14px;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 18px;
   text-decoration: none;
   display: inline-block;
@@ -154,6 +231,7 @@ button:hover, button:focus, button.hover, button.focus, .button:hover, .button:f
 button:focus, button.focus, .button.focus, .button:focus {
   border: 2px solid #666;
 }
+
 
 /*button:active, button.active, .button:active, .button.active, input[type=submit]:active, input[type=submit].active {
   transform: translate(4px, 4px);

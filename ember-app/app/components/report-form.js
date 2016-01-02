@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import uuid from 'npm:node-uuid';
 
 export default Ember.Component.extend({
   reportService: Ember.inject.service('report-service'),
-  cookieMonster: Ember.inject.service('cookieMonster'),
+  userService: Ember.inject.service('user'),
   isOk: false,
   wantsInvite: false,
   wantsAnon: false,
@@ -14,9 +13,9 @@ export default Ember.Component.extend({
   anonChanged: Ember.observer('wantsAnon', function() {
     let uname;
     if (this.wantsAnon) {
-      uname = uuid.v4();
+      uname = "anonymous"
     } else {
-      uname = this.get('cookieMonster').eat('username');
+      uname = this.get('userService').username;
     }
     this.get('reportService').set('report.username', uname);
   }),

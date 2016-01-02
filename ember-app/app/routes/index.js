@@ -1,8 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  cookieMonster: Ember.inject.service('cookieMonster'),
+  userService: Ember.inject.service('user'),
   apiDomain: 'http://avrgat.noopkat.com',
+  redirect() {
+    var token  = this.get('userService').token;
+
+    // if tester is logged in, bump them back to the start page
+    if (token) {
+      this.transitionTo('start');
+    }
+  },
   init: function() {
     this._super.apply(this, arguments);
     var self = this;
@@ -19,7 +27,7 @@ export default Ember.Route.extend({
       // remove listener - we no longer need it
       window.removeEventListener('message');
       // create a cookie and store the github token
-      this.get('cookieMonster').bake('api-token', event.data, 30);
+      this.get('userService').createToken(event.data);
       // redirect
       this.transitionTo('start');
     }, false);

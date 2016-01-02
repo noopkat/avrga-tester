@@ -1,14 +1,14 @@
 import Ember from 'ember';
 
 var boards = [
- { 
+ {
     human: 'Uno',
     machine: 'uno'
-  }, 
+  },
   {
     human: 'Mega',
     machine: 'mega'
-  }, 
+  },
   {
     human: 'Leonardo',
     machine: 'leonardo'
@@ -25,7 +25,7 @@ var boards = [
     human: 'Pro Mini',
     machine: 'pro-mini'
   },
-  {   
+  {
     human: 'Duemilanove 168',
     machine: 'duemilanove168'
   },
@@ -52,14 +52,18 @@ var boards = [
   {
     human: 'IMUDuino',
     machine: 'imuduino'
+  },
+   {
+    human: 'Adafruit Feather',
+    machine: 'feather'
   }];
 
 export default Ember.Route.extend({
   reportService: Ember.inject.service('report-service'),
   socketService: Ember.inject.service('websockets'),
-  cookieMonster: Ember.inject.service('cookieMonster'),
+  userService: Ember.inject.service('user'),
   redirect() {
-    var token  = this.get('cookieMonster').eat('api-token');
+    var token  = this.get('userService').token;
 
     // if tester is not logged in, bump them back to sign in page
     if (!token) {
@@ -68,7 +72,7 @@ export default Ember.Route.extend({
   },
   init: function() {
     this._super.apply(this, arguments);
- 
+
     // get socket for use
     var socket = this.get('socketService').socketFor(`ws://${window.location.host}`);
 
@@ -81,7 +85,7 @@ export default Ember.Route.extend({
   },
   messageHandler: function(event) {
     var message = JSON.parse(event.data);
-    message.username = this.get('cookieMonster').eat('username');
+    message.username = this.get('userService').username;
 
     // if we got a report
     if (message.type === 'report') {

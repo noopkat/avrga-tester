@@ -1,10 +1,31 @@
 <p>The following information will be submitted as a report, is this ok?</p>
-<ul>
-  <li>Username: {{report.username}}</li>
-  <li>OS: {{report.os}}</li>
-  <li>OS version: {{report.osv}}</li>
-  <li>Node version: {{report.nodev}}</li>
-  <li>Tester version: {{report.avrgatv}}</li>
-  <li>AVRGirl-Arduino version: {{report.avrgav}}</li>
-    <li>Errors: {{#if report.error}}"{{report.error}}"{{else}}None{{/if}}</li>
-</ul>
+<table class="reportlist">
+  <tr>
+    <td>Username:</td>
+    <td>{{report.username}}</td>
+  </tr>
+  <tr>
+    <td>OS:</td>
+    <td>{{report.os}}</td>
+  </tr>
+  <tr>
+    <td>OS version:</td>
+    <td>{{report.osv}}</td>
+  </tr>
+  <tr>
+    <td>Node version:</td>
+    <td>{{report.nodev}}</td>
+  </tr>
+  <tr>
+    <td>Tester version:</td>
+    <td>{{report.avrgatv}}</td>
+  </tr>
+  <tr>
+    <td>AVRGirl version:</td>
+    <td>{{report.avrgav}}</td>
+  </tr>
+  <tr>
+    <td>Errors:</td>
+    <td>{{#if report.error}}"{{report.error}}"{{else}}None{{/if}}</td>
+  </tr>
+</table>
