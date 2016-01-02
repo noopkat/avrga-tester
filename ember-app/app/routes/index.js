@@ -13,24 +13,24 @@ export default Ember.Route.extend({
   },
   init: function() {
     this._super.apply(this, arguments);
-    var self = this;
-
     // start listening for window messaging
     this.messageListen();
   },
   messageListen: function() {
+    var handler = this.get('messageAction');
     // listen for authentication success message
-    window.addEventListener('message', () => {
-      // boot out if it's not from where we're expecting
-      if (event.origin !== this.apiDomain) { return; }
-
-      // remove listener - we no longer need it
-      window.removeEventListener('message');
-      // create a cookie and store the github token
-      this.get('userService').createToken(event.data);
-      // redirect
-      this.transitionTo('start');
-    }, false);
+    window.addEventListener('message', handler.bind(this), false);
+  },
+  messageAction: function(event) {
+    // boot out if it's not from where we're expecting
+    if (event.origin !== this.get('apiDomain')) { return; }
+    var handler = this.get('messageAction');
+    // remove listener - we no longer need it
+    window.removeEventListener('message', handler);
+    // create a cookie and store the github token
+    this.get('userService').createToken(event.data);
+    // redirect
+    this.transitionTo('start');
   },
   actions: {
     popUpAuth: function() {
