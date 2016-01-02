@@ -39,7 +39,7 @@ module.exports = function (Avrgirl, version, hexpath) {
 
     figlet('test-pilot', {font: 'speed'}, function(err, data) {
       console.log(data)
-      console.log('Now running AVRGA test-pilot on http://%s:%s', host, port);
+      console.log('Now running AVRGA test-pilot v%s on http://%s:%s', avrgatv, host, port);
       console.log('(Press Ctrl + C to quit)');
       opener('http://' + host + ':' + port);
     });
