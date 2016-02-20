@@ -1,8 +1,8 @@
 {{#board-character}}{{/board-character}}
-<div id="content" class="githublogin">
+{{#content-container classname="githublogin"}}
   <p>Thank you for agreeing to test pilot AVRGirl Arduino!</p>
   <p><strong>Note: running this test will overwrite any code you have saved on your Arduino.</strong></p>
   <p>We'll be logging you in using your Github account. Click the button below to get started.</p>
 
   <button {{action 'popUpAuth'}} class="button login">Log in via Github</button>
-</div>
+{{/content-container}}

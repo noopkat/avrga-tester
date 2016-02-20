@@ -1,6 +1,5 @@
 {{#board-character}}{{/board-character}}
-<div id="content">
-<p>Ok, let's do it, {{#user-name}}{{/user-name}}!</p>
-
-{{#board-form boards=model}}{{/board-form}}
-</div>
+{{#content-container}}
+  <p>Ok, let's do it, {{#user-name}}{{/user-name}}!</p>
+  {{#board-form boards=model}}{{/board-form}}
+{{/content-container}}
