@@ -72,6 +72,7 @@ a:hover {
   position: relative;
   float: left;
   margin-right: 40px;
+  margin-bottom: 60px;
 }
 
 #content: {
@@ -130,9 +131,10 @@ a:hover {
 
 #boardform li {
   position: relative;
-  margin-bottom: 30px;
+  /*margin-bottom: 30px;*/
   padding-left: 0px;
   font-size: 20px;
+  padding-bottom: 30px;
 }
 
 #boardform li:before {
@@ -144,6 +146,13 @@ a:hover {
   top:3px;
   left:-15px;
   color: #aaa;
+  padding-bottom: 30px;
+}
+
+#boardform .error {
+  color: #BF1815;
+  font-size: 15px;
+  width: 100%;
 }
 
 #reportform {
@@ -247,10 +256,6 @@ a.headerlink:hover {
   text-decoration: underline;
 }
 
-a.button.login {
-  font-size: 24px;
-}
-
 button, .button, input[type=submit] {
   border: 0;
   background: #5786c1;
@@ -276,6 +281,9 @@ button:focus, button.focus, .button.focus, .button:focus {
   border: 2px solid #666;
 }
 
+button.button.login {
+  font-size: 24px;
+}
 
 /*button:active, button.active, .button:active, .button.active, input[type=submit]:active, input[type=submit].active {
   transform: translate(4px, 4px);

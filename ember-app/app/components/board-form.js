@@ -5,12 +5,18 @@ export default Ember.Component.extend({
   boardChoice: '',
   buttonClass: 'starttest',
   buttonText: 'Start the test!',
+  error: null,
+  removeError: Ember.observer('boardChoice', function() {
+    if (this.get('boardChoice')) {
+      this.set('error', '');
+    }
+  }),
   actions: {
     startTest: function() {
       // if tester did not choose a board
-      if (!this.boardChoice) {
-        // todo: replace this silly alert with a helpful UI error
-        return alert('please select a board');
+      if (!this.get('boardChoice')) {
+        this.set('error', 'Oops! Please select a board first.');
+        return;
       }
       this.set('buttonClass', 'grey');
       this.set('buttonText', 'Running test...');

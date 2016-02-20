@@ -4,11 +4,14 @@
     <li>Plug in your Arduino</li>
     <li>
       {{simple-select
-      content=boards 
-      optionLabelPath="human" 
-      optionValuePath="machine" 
-      action="boardChange" 
-      prompt="Which board is it?"}}
+        content=boards 
+        optionLabelPath="human" 
+        optionValuePath="machine" 
+        action="boardChange" 
+        prompt="Which board is it?"}}
+        {{#if error}}
+          <span class="error">{{error}}</span>
+        {{/if}}
     </li>
     <li>
       <button {{action "startTest"}} class="{{buttonClass}}">{{buttonText}}</button>

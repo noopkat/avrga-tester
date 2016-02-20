@@ -6,4 +6,4 @@ export default {
   name: 'token-cookie',
   after: ['cookie'],
   initialize: initialize
-}
+};

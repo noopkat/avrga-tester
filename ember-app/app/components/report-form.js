@@ -14,7 +14,7 @@ export default Ember.Component.extend({
   anonChanged: Ember.observer('wantsAnon', function() {
     let uname;
     if (this.wantsAnon) {
-      uname = "anonymous"
+      uname = 'anonymous';
     } else {
       uname = this.get('userService').username;
     }
@@ -55,7 +55,7 @@ export default Ember.Component.extend({
 
       this.postReport(fullReport).then(() => {
         this.sendAction('gotoThanks');
-      }, (error, textStatus) => {
+      }, (error) => {
         this.set('errorString', `Oops! Something went wrong when trying to submit the report. ${error}`);
       });
     }
