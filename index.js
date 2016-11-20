@@ -5,7 +5,7 @@ var expressWs = require('express-ws')(app);
 var opener = require('opener');
 var os = require('os');
 var fs = require('fs');
-var figlet = require('figlet');
+var ascii = require('./lib/asciiArt');
 
 module.exports = function (Avrgirl, version, hexpath) {
 
@@ -37,12 +37,10 @@ module.exports = function (Avrgirl, version, hexpath) {
     var host = server.address().address;
     var port = server.address().port;
 
-    figlet('test-pilot', {font: 'speed'}, function(err, data) {
-      console.log(data)
-      console.log('Now running AVRGA test-pilot v%s on http://%s:%s', avrgatv, host, port);
-      console.log('(Press Ctrl + C to quit)');
-      opener('http://' + host + ':' + port);
-    });
+    console.log(ascii);
+    console.log('Now running AVRGA test-pilot v%s on http://%s:%s', avrgatv, host, port);
+    console.log('(Press Ctrl + C to quit)');
+    opener('http://' + host + ':' + port);
   }
 
   function messageHandler(message, ws) {
