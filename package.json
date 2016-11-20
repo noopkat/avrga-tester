@@ -1,6 +1,6 @@
 {
   "name": "avrga-tester",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "test avrgirl-arduino the fun way",
   "main": "index.js",
   "scripts": {
