@@ -20,7 +20,7 @@ module.exports = function (Avrgirl, version, hexpath) {
 
   app.use('/assets', express.static(__dirname + '/frontend/assets/'));
 
-  app.get('/*', function(req, res) {
+  app.get('/', function(req, res) {
     res.sendFile(__dirname + '/frontend/index.html');
   });
 

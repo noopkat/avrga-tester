@@ -18,12 +18,12 @@
   },
   "homepage": "https://github.com/noopkat/avrga-tester#readme",
   "dependencies": {
-    "express": "^4.13.3",
-    "express-ws": "^0.2.6",
-    "node-uuid": "^1.4.7",
-    "opener": "^1.4.1"
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "node-uuid": "^1.4.8",
+    "opener": "^1.5.2"
   },
   "devDependencies": {
-    "avrgirl-arduino": "1.x"
+    "avrgirl-arduino": "^4.4.0"
   }
 }
